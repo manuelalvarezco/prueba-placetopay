@@ -41,7 +41,6 @@ class OrderController extends Controller
     {
 
         
-
         $order = new Order();
 
         $order->customer_name = $request->customer_name;
@@ -65,7 +64,7 @@ class OrderController extends Controller
                 'reference' => $reference,
                 'description' => $request->product_description,
                 'amount' => [
-                    'currency' => 'USD',
+                    'currency' => 'COP',
                     'total' => $request->product_price,
                 ],
             ],
