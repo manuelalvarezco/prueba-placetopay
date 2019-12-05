@@ -18,6 +18,7 @@ class OrderController extends Controller
     {
         $orders = Order::all();
 
+
         return view('orders.index', compact('orders'));
     }
 
@@ -50,9 +51,12 @@ class OrderController extends Controller
         $order->product_description = $request->product_description;
         $order->product_price = $request->product_price;
 
+        $placetopay_login_id = config('services.placetopay.placetopay_login_id');
+        $placetopay_tran_key = config('services.placetopay.placetopay_tran_key');
+
         $placetopay = new PlacetoPay([
-            'login' => '{{your_login}}',
-            'tranKey' => '{{your_tranKey}}',
+            'login' => $placetopay_login_id,
+            'tranKey' => $placetopay_tran_key,
             'url' => 'https://dev.placetopay.com/redirection/',
         ]);
 
@@ -69,7 +73,7 @@ class OrderController extends Controller
                 ],
             ],
             'expiration' => date('c', strtotime('+2 days')),
-            'returnUrl' => 'http://localhost/prueba-placetopay/public/orders/',
+            'returnUrl' => 'http://127.0.0.1:8000/orders/',
             'ipAddress' => '127.0.0.1',
             'userAgent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
         ];
@@ -103,11 +107,14 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, $id)
-    {
+    {  
+
+        $placetopay_login_id = config('services.placetopay.placetopay_login_id');
+        $placetopay_tran_key = config('services.placetopay.placetopay_tran_key');
 
         $placetopay = new PlacetoPay([
-            'login' => '{{your_login}}',
-            'tranKey' => '{{your_tranKey}}',
+            'login' => $placetopay_login_id,
+            'tranKey' => $placetopay_tran_key,
             'url' => 'https://dev.placetopay.com/redirection/',
         ]);
 

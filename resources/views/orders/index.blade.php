@@ -15,7 +15,7 @@
   <tbody>
   @foreach($orders as $item)
     <tr>
-      <td><a href="{{url('/orders/'.$item->id)}}" class="btn btn-outline-info">{{$item->requestId}}</a></td>
+      <td><a href="{{url('/orders/'.$item->id)}}" class="btn btn-outline-danger">Ver Compra</a></td>
       <td>{{$item->product_name}}</td>
       <td>{{$item->product_description}}</td>
       <td>US ${{$item->product_price}}</td>

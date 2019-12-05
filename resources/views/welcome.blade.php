@@ -8,7 +8,7 @@
     @foreach($products as $item)
 
     <div class="card">
-        <img src="../public/img/{{$item->img}}" class="card-img-top" alt="...">
+        <img src="/img/{{$item->img}}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{$item->name}}</h5>
           <p class="card-text">{{$item->description}}</p>

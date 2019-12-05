@@ -44,4 +44,9 @@ return [
         ],
     ],
 
+    'placetopay' => [
+        'placetopay_login_id' => env('PLACETOPAY_LOGIN_ID'),
+        'placetopay_tran_key' => env('PLACETOPAY_TRANKEY'),
+    ],
+
 ];
